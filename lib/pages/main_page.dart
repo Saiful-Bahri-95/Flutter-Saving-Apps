@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBgColor,
+      backgroundColor: const Color.fromARGB(255, 180, 200, 242),
       body: pages[_selectedIndex],
       bottomNavigationBar: _customBottomNav(),
     );

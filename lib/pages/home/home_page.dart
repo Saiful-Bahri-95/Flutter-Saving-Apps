@@ -112,8 +112,116 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 170),
+              child: DraggableScrollableSheet(
+                builder: (context, scrollController) => Container(
+                  decoration: BoxDecoration(
+                    color: kWhite,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(40),
+                    ),
+                  ),
+                  padding: EdgeInsets.only(left: 30, right: 30, top: 21),
+                  child: Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: 14 + 4),
+                        child: SingleChildScrollView(
+                          controller: scrollController,
+                          child: Column(
+                            children: [
+                              Center(
+                                child: Text(
+                                  'Transactions History',
+                                  style: kHeading6.copyWith(
+                                    color: kLuckyBlue,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 31),
+                              transactionList(
+                                kTreeGreen.withOpacity(0.2),
+                                'assets/icons/triangle-up.png',
+                                'Success!',
+                                'February 19, 05:45 PM',
+                                '+ 100.000',
+                              ),
+                              transactionList(
+                                kTreeGreen.withOpacity(0.2),
+                                'assets/icons/triangle-up.png',
+                                'Success!',
+                                'February 12, 06:13 PM',
+                                '+ 150.000',
+                              ),
+                              transactionList(
+                                kOrange.withOpacity(0.2),
+                                'assets/icons/triangle-down.png',
+                                'Coffee Shop',
+                                'February 12, 06:13 PM',
+                                '- 110.000',
+                              ),
+                              transactionList(
+                                kOrange.withOpacity(0.2),
+                                'assets/icons/triangle-down.png',
+                                'Payment Electricity',
+                                'February 12, 06:13 PM',
+                                '- 150.000',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          height: 4,
+                          width: 49,
+                          color: kEgyptianBlue.withOpacity(0.1),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget transactionList(
+    Color bgColor,
+    String icon,
+    String title,
+    String sub,
+    String amount,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 30,
+            width: 30,
+            child: CircleAvatar(
+              backgroundColor: bgColor,
+              child: Image(image: AssetImage(icon), width: 14),
+            ),
+          ),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: kBody1.copyWith(color: kLuckyBlue)),
+              Text(sub, style: kCaption.copyWith(color: kLightGray)),
+            ],
+          ),
+          Spacer(),
+          Text(amount, style: kBody1.copyWith(color: kLuckyBlue)),
+        ],
       ),
     );
   }
@@ -123,7 +231,7 @@ class HomePage extends StatelessWidget {
       child: Container(
         constraints: BoxConstraints.expand(height: 60),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 163, 64, 37),
+          color: const Color.fromARGB(255, 50, 169, 188),
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
         child: Row(
